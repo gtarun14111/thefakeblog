@@ -1,0 +1,31 @@
+.navbar {
+	position: sticky;
+	top: 0;
+	font-family: 'PT Serif', serif;
+	color: #323232;
+	background-color: rgb(192,192,192, 0.5);
+	height: calc(20px + 3vw);
+	display: flex;	
+	align-items: center;
+	z-index: 100;	
+	width: 100%;
+}
+
+.Link {
+	text-decoration: none;
+	color: inherit;
+}
+
+.Tabs {
+	padding: 0px 4vw;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.Tabs:first-child {
+	margin-right: auto;
+}
+
+.Tabs:hover {
+	background-color: black;
+}

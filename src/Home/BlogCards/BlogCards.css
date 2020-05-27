@@ -1,0 +1,16 @@
+.center {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+  margin: 100px;
+}
+
+@media only screen and (max-width: 840px) {
+
+	.center {
+		margin: 0;
+	}
+
+}

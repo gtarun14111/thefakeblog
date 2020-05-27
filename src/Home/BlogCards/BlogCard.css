@@ -1,0 +1,59 @@
+.Bcard {
+	width: 250px;
+	margin: 20px;
+	padding: 20px 5px;
+	background-color: white;
+	border: 2px #3f51b5 solid;
+	height: 300px;
+	transition: 1s;
+	display: flex;
+	overflow: hidden;
+	position: static;
+}
+
+.BCardContent {
+	display: none;
+	padding: 10px;
+}
+
+
+
+
+@media only screen and (min-width: 800px) {
+
+  .Bcard:focus, .Bcard:hover {
+	transform: scale(1.1);
+	width: 400px;
+	animation-timing-function: ease-out;
+	margin-left: -50px;
+}
+	
+	.Bcard:focus > .BCardContent, .Bcard:hover > .BCardContent {
+		display: flex;
+	}
+
+
+}
+
+@media only screen and (max-width: 800px) {
+  .Bcard:focus, .Bcard:hover {
+	transform: scale(1.1);
+	height: 500px;
+	animation-timing-function: ease-out;
+	margin-top: -75px;
+}
+
+	.Bcard {
+		flex-wrap: wrap;
+	}
+	
+
+	.Bcard:focus > .BCardContent, .Bcard:hover > .BCardContent {
+		display: flex;
+	}
+}
+
+.BCardimg {
+	width: 230px;
+	height: auto;
+}

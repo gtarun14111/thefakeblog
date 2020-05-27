@@ -1,0 +1,60 @@
+.blog {
+	background-color: rgba(232, 232, 232, 1);
+	margin: 0;
+}
+
+.ContentArea {
+	width: 85%;
+	height: auto;
+	text-align: left;
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 5%;
+	padding: 4% 2.4%;
+	box-shadow: 0px 0px 13px 0px rgba(20,19,20,1);
+	border-radius: 0px 0px 20px 20px;
+	margin-bottom: 15vh;
+}
+
+.CommentArea {
+	width: 85%;
+	height: auto;
+	text-align: left;
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 5%;
+	padding: 4% 2.4%;
+	box-shadow: 0px 0px 13px 0px rgba(20,19,20,1);
+	border-radius: 20px 20px 0px 0px;
+}
+
+.ContentArea > .Heading {
+	font-size: calc(10px + 5vh);
+	margin-bottom: 3vh;
+	border-bottom: 2px black solid;
+	width: 90%;
+	padding-top: 10vh;
+}
+
+.CommentArea > .Heading {
+	font-size: calc(10px + 5vh);
+	margin-bottom: 5vh;
+	border-bottom: 2px purple solid;
+	width: 90%;
+}
+
+.ContentArea > .Body {
+	font-size: calc(5px + 3vh);
+}
+
+@media only screen and (max-width: 600px) {
+  .ContentArea > .Body {
+    font-size: calc(2.5vh);
+  }
+}

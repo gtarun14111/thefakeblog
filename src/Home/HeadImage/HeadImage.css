@@ -1,0 +1,27 @@
+.HeadContainer {
+	width: 100%;
+	height: calc(100vw - 50px);
+}
+
+
+.HeadImg {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.ImageText {
+	top: 50vw;
+	left: 50vw;
+	position: absolute;
+	text-align: left;
+	color: white;
+}
+
+h1 {
+	font-size: 5vw;
+}
+
+h3 {
+	font-size: 3vw;
+}
