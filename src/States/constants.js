@@ -1,1 +1,18 @@
-export const GET_USER = "GET_USER";
+//Constants for user
+export const GET_USER_FIRST_NAME = "GET_USER_FIRST_NAME";
+export const GET_USER_LAST_NAME = "GET_USER_LAST_NAME";
+export const GET_USER_EMAIL = "GET_USER_EMAIL";
+export const GET_USER_PASSWORD = "GET_USER_PASSWORD";
+
+//Constants for Blog
+export const GET_BLOG_HEADING = "GET_BLOG_HEADING";
+export const GET_BLOG_CONTENT = "GET_BLOG_CONTENT";
+export const GET_BLOG_AUTHOR = "GET_BLOG_AUTHOR";
+export const ADD_BLOG_ITEM = "ADD_BLOG_ITEM";
+export const BLOG_SELECTED = "BLOG_SELECTED";
+
+
+export const GET_COMMENT_HEADING = "GET_COMMENT_HEADING";
+export const GET_COMMENTATOR = "GET_COMMENTATOR";
+export const GET_COMMENT_BODY = "GET_COMMENT_BODY";
+export const ADD_COMMENT = "ADD_COMMENT";

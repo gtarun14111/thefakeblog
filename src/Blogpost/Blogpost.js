@@ -11,8 +11,8 @@ const Blogpost = (props) => {
   	<div 
   	className = "blog">
   			<BlogImage />
-			<ContentArea />
-			<CommentArea />
+			<ContentArea blog={props.blog} />
+			<CommentArea props = {props}/>
     </div>
   );
 }

@@ -3,14 +3,12 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { green } from '@material-ui/core/colors';
+
 
 
 
@@ -32,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexgrow: 1
 		}
 	}))
+
 
 
 const openSocialLink = (type) => {
@@ -66,10 +65,22 @@ const Footer = () => {
           <Typography variant="h6" className={classes.title}>
             By, Tarun Garg
           </Typography>
-          <IconButton onClick={openSocialLink("insta")} color="secondary" className= {classes.button}><InstagramIcon /></IconButton>
-          <IconButton onClick={openSocialLink("ldin")} color="primary"><LinkedInIcon /></IconButton>
-          <IconButton onClick={openSocialLink("fb")} color="primary"><FacebookIcon /></IconButton>
-          <IconButton onClick={openSocialLink("git")} ><GitHubIcon /></IconButton>
+	          <IconButton 
+	          onClick={openSocialLink("insta")} 
+	          color="secondary" 
+	          className= {classes.button}>
+	          	<InstagramIcon />
+	          </IconButton>
+	          <IconButton onClick={openSocialLink("ldin")} color="primary">
+	          	<LinkedInIcon />
+	          </IconButton>
+	          <IconButton onClick={openSocialLink("fb")} color="primary">
+	          	<FacebookIcon />
+	          </IconButton>
+	          <IconButton onClick={openSocialLink("git")} color="secondary"
+	         style = {{ color: "grey"}}>
+	          	<GitHubIcon />
+	          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

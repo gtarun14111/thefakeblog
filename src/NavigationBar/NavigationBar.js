@@ -55,15 +55,9 @@ const NavigationBar = () => {
           <Button onClick={consoler} className = {classes.button} color="inherit">
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Home
           </Link></Button>
-          <Link to="/blogpost" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <Button color="inherit">Writing</Button>
+          <Link to="/signin" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Button color="inherit">Login</Button>
           </Link>
-          <Link to="/blogpost" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <Button color="inherit">
-          Tech
-          </Button>
-          </Link>
-
         </Toolbar>
       </AppBar>
     </div>

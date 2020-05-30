@@ -19,7 +19,6 @@
 	padding: 10px;
 	border-top: 0px;
 	font-size: calc(3px + 1.5vh);
-	color: rgba(128, 128, 192, 0.8);
 	font-family: 'PT Sans', sans-serif;
 	box-shadow: 10px 10px 38px -13px rgba(171,28,199,1);
 	color: white;	
@@ -37,4 +36,19 @@
 	color: rgba(128, 128, 192, 1);
 	font-size: calc(3px + 2.3vh);
 	font-weight: 600;
+}
+
+.commentAdder {
+	width: 100%;
+
+}
+
+#commentAddLabel {
+	padding: 5px;
+	width: 40%;
+}
+
+#commentAddText {
+	padding: 5px;
+	width: 80%;
 }

@@ -1,41 +1,41 @@
 import React from 'react';
 import Comment from './Comment';
+import AddComment from './AddComment';
 
-const CommentArea = (props) => {
-  const cArr = [ {
-    commentator: "Mohit",
-    comment: {
-      caption: "Great Work",
-      body: "This is a nice website"
-    }
-  },
-  {
-    commentator: "Luv",
-    comment: {
-      caption: "Suggestion!",
-      body: "Dimaag se soch!"
-
-    }
-  },
-  {
-    commentator: "Ruddraksh",
-    comment: {
-      caption: "kya hai ye?",
-      body: "Ye sab mujhe smjh nhi ata par jaisa bhi h theek h."
-    }
-  }
-  ]
+const CommentArea = ({ props }) => {
+  const { blog, 
+      addCommentHeading,
+      addCommentBody,
+      addCommentator,
+      addCommentItem,
+      cmnt,
+      cmntHead,
+      cmntBody
+         } = props;
+  console.log(props);
+  const commentList = [].concat(cmnt);
+  commentList.shift();
+  console.log(commentList);
+  const cArr = [].concat(commentList);
   return (
   	<div
     className = "CommentArea"
     >
-    <div className="Heading"> Commention Section</div>
+    <div className="Heading"> Comment Section</div>
+    <AddComment 
+    addCommentBody = {addCommentBody}
+    addCommentHeading = {addCommentHeading} 
+    addCommentItem = {addCommentItem}
+    cmntHead = {cmntHead}
+    cmntBody = {cmntBody}
+    />
     {
-      cArr.map(cmnt => {
+      cArr.map(item => {
         return (
           <Comment
-          commentator = {cmnt.commentator}
-          comment = {cmnt.comment} 
+          key={Math.random()}
+          commentator = {item.commentator}
+          comment = {item} 
           />
         )
       })

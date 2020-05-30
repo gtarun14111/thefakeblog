@@ -2,6 +2,9 @@ import React from 'react';
 import './Comment.css';
 
 const Comment = ({commentator, comment}) => {
+  console.log(commentator);
+  console.log(comment);
+  
   return (
     <div
     className = "cmnt">
@@ -9,12 +12,12 @@ const Comment = ({commentator, comment}) => {
         <div
         className = "caption"
         >
-          {comment.caption}
+          {comment.commentHeading}
         </div>
-        {comment.body}
+        {comment.commentBody}
       </div>
       <div className = "commentator">
-        {commentator}
+        {comment.commentator}
       </div>
     </div>
   );
