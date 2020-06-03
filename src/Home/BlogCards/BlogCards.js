@@ -2,33 +2,18 @@ import React from 'react';
 import './BlogCards.css';
 import BlogCard from './BlogCard';
 
-const BlogCards = ({ totalBlogs, blogSelection }) => {
-	console.log(blogSelection);
-	totalBlogs = [].concat(totalBlogs);
-	totalBlogs.shift();
-	let cardArr = [{
-		heading: "",
-		content: ""
-	},
-	{
-		heading: "tg",
-		content: "'dan"
-	}].concat(totalBlogs);
-	cardArr.shift();
-
+const BlogCards = ({ totalBlogs }) => {
+	totalBlogs = totalBlogs.blogs;
 	return (
 		<div className= "center">
 			{
-				cardArr.map(card => {
-  console.log(card.blogId);
+				totalBlogs.map(card => {
 					return (
 						<BlogCard
 
 						key = {Math.random()}
 						src = {`https://picsum.photos/1500/1500/`}
 						card = {card}
-						blogSelection = {blogSelection}
-						onClick={blogSelection(card.blogId)}
 						>
 						</BlogCard>
 					)
@@ -37,5 +22,6 @@ const BlogCards = ({ totalBlogs, blogSelection }) => {
 		</div>
 		);
 }
+
 
 export default BlogCards;

@@ -2,7 +2,7 @@ import React from 'react';
 import './AddComment.css';
 import Paper from '@material-ui/core/Paper';
 
-const AddComment = ({ addCommentBody, addCommentHeading, addCommentItem, cmntHead, cmntBody }) => {
+const AddComment = ({ addCommentBody, addCommentHeading, commentator, addCommentItem, cmntHead, cmntBody, address }) => {
 	return (
 		<Paper 
 		elevation = {24}
@@ -28,7 +28,15 @@ const AddComment = ({ addCommentBody, addCommentHeading, addCommentItem, cmntHea
 			value = {cmntBody}
 			></textarea>
 		</div>
-			<button className="buttonCmntAdd" onClick={addCommentItem}> Click me to comment! </button>
+			<button className="buttonCmntAdd"
+			onClick={function() {addCommentItem(address)(
+				commentator,
+				cmntBody,
+				cmntHead)();
+				window.location.reload();
+				}	
+			}
+			> Click me to comment! </button>
 		</div>
 		</Paper>
 		)

@@ -11,8 +11,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { connect } from 'react-redux';
 import { 
   getUserFirstName,
@@ -26,41 +27,76 @@ import {
   getCommentBody,
   getCommentHeading,
   getCommentator,
-  addNewComment,
-  selectBlog } from '../States/actions'
+  addComment,
+  isUserValid,
+  selectBlog,
+  addingUser,
+  getBlogList,
+  getBlogPost,
+  addBlog } from '../States/actions'
 
 
 const mapStateToProps = state => {
-  const { firstname, lastname, email, password, isSignedIn } = state.userActions;
+  const { firstname, email, password } = state.userActions;
+  const user = {...state.userActions};
   const blog = {...state.blogActions};
   const cmnt = {...state.commentActions};
+  const actionUpdates = {...state.actionUpdates};
+  const blogList = {...state.showBlogList};
+  const blogPost = {...state.showBlogPost};
+  const cmntAction = {...state.cmntAddAction};
       return {
-        firstname, 
-        lastname, 
+        firstname,
         email, 
-        password, 
-        isSignedIn ,
+        password,
+        user,
         blog,
-        cmnt
+        cmnt,
+        actionUpdates,
+        blogList,
+        blogPost,
+        cmntAction
       }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    //User Actions
     onFirstNameEnter: (event) => dispatch(getUserFirstName(event.target.value)),
     onLastNameEnter: (event) => dispatch(getUserLastName(event.target.value)),
     onEmailEnter: (event) => dispatch(getUserEmail(event.target.value)),
     onPasswordEnter: (event) => dispatch(getUserPassword(event.target.value)),
+    
+    checkUser: (email, password) => (event) => dispatch(isUserValid(email, password)),
+    addUser: (user) => (event) => dispatch(addingUser(user)),
+
+    //Blog Actions
     addingBlogHeading: (event) => dispatch(getBlogHeading(event.target.value)),
     addingBlogAuthor: (author) => (event) => {dispatch(getBlogAuthor(author))},
     addingBlogContent: (event) => dispatch(getBlogContent(event.target.value)),
     addingBlogItem: (event) => dispatch(addNewBlog("")),
+    showBlogs: () => (event) => dispatch(getBlogList()),
+    showBlogPost: (location) => (event) => dispatch(getBlogPost(location)),
+    addBlog: (author, heading, content, blogId) => (event) => dispatch(addBlog(author, heading, content, blogId)),
+
+    //Comment Actions
     addingCmntHeading: (event) => dispatch(getCommentHeading(event.target.value)),
     addingCommentator: (event) => {dispatch(getCommentator(event.target.value))},
     addingCmntBody: (event) => dispatch(getCommentBody(event.target.value)),
-    addingCmntItem: (event) => dispatch(addNewComment("")),
+    addingCmntItem: (location) => (commentator, cmntBody, cmntHeading) => (event) => dispatch(addComment(location, commentator, cmntBody, cmntHeading)),
     blogSelection: (bId) => (event) => dispatch(selectBlog(bId)),
   }
+}
+
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 
@@ -68,16 +104,30 @@ class App extends React.Component {
 
   render() {
     const {
+      actionUpdates,
+
       onFirstNameEnter,
-      email,
       onLastNameEnter,
       onEmailEnter,
       onPasswordEnter,
+      email,
+      password,
+      user,
+      checkUser,
+      addUser,
+
       addingBlogHeading,
       addingBlogAuthor,
       blog,
+      blogList,
       addingBlogContent,
       addingBlogItem,
+      blogPost,
+      showBlogs,
+      showBlogPost,
+      addBlog,
+
+
       addingCmntHeading,
       addingCommentator,
       addingCmntBody,
@@ -87,7 +137,8 @@ class App extends React.Component {
     } = this.props; 
 
     return (
-  	<Router>  	
+  	<Router>
+    <ScrollToTop />	
     <div className="App">
     <Switch>
     <Route path = "/signin">
@@ -95,6 +146,8 @@ class App extends React.Component {
       getEmail = {onEmailEnter}
       addCommentator = {addingCommentator}
       getPassword = {onPasswordEnter}
+      checkUser = {checkUser(email, password)}
+      actionUpdates = {actionUpdates}
        />
       }
       }
@@ -105,28 +158,35 @@ class App extends React.Component {
       getLastName = {onLastNameEnter}
       getEmail = {onEmailEnter}
       getPassword = {onPasswordEnter}
+      addUser = {addUser(user)}
+      actionUpdates = {actionUpdates}
        />
+      }
 	</Route>
     <Route path="/">
-    	<NavigationBar />
+    	<NavigationBar
+          email={email} />
     	<Switch>
 	    	<Route exact path = "/">
 	    		<Home 
           email={email}
-
-          blog = {blog.totalBlogs}
+          blog = {blogList}
           blogSelection = {blogSelection}
+          showBlogs = {showBlogs}
           />
 	    	</Route>
-	    	<Route path = "/Blogpost">
+	    	<Route path = "/Blogpost/">
+
 	    		<Blogpost 
-          blog = {blog}
+          blog = {blogPost}
           addCommentHeading = {addingCmntHeading}
           addCommentBody = {addingCmntBody}
           addCommentItem = {addingCmntItem}
           cmnt = {cmnt.totalComments}
           cmntHead = {cmnt.commentHeading}
           cmntBody = {cmnt.commentBody}
+          commentator = {email}
+          showBlogPost = {showBlogPost}
           />
 	    	</Route>
         <Route path = "/blogAdder">
@@ -134,7 +194,7 @@ class App extends React.Component {
           addBlogHeading = {addingBlogHeading}
           addBlogContent = {addingBlogContent}
           addBlogAuthor = {addingBlogAuthor}
-          addBlogItem = {addingBlogItem}
+          addBlog = {addBlog(email, blog.heading, blog.content, blog.blogId)}
           author = {email}
           />
         </Route>

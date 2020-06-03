@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const BlogAdder = ({ addBlogHeading, addBlogContent, addBlogAuthor, addBlogItem, author }) => {
+const BlogAdder = ({ addBlogHeading, addBlogContent, addBlogAuthor, addBlog, author }) => {
 	const [open, setOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
@@ -48,7 +48,7 @@ const BlogAdder = ({ addBlogHeading, addBlogContent, addBlogAuthor, addBlogItem,
 				<Button variant = "contained" color="primary"
 				onClick = {function(event){
 					addBlogAuthor(author)(event);
-					addBlogItem(event);
+					addBlog(event);
 					handleClickOpen();
 				}
 				}

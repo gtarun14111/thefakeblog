@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import './BlogCard.css';
 import { Link } from "react-router-dom"; 
 
-const BlogCard = ({ src, card, blogSelection }) => {
+const BlogCard = ({ src, card }) => {
   return (
   	<div>
     <Link to={`/Blogpost/:${card.blogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-  	<button className = "Bcard" onClick={blogSelection(card.blogId)}>
+  	<button className = "Bcard">
   			<Fragment>
         <div>
           <img 

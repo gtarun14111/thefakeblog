@@ -9,6 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom"; 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Copyright() {
   return (
@@ -43,8 +49,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ getEmail, addCommentator, getPassword }) {
+export default function SignIn({ getEmail,
+  getPassword, 
+  checkUser,
+  actionUpdates }) {
+  const { isProcessing, message, isSignedIn } = actionUpdates;
   const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+  setOpen(true);
+};
+
+  const handleClose = () => {
+  setOpen(false);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -68,7 +89,6 @@ export default function SignIn({ getEmail, addCommentator, getPassword }) {
             autoFocus
             onChange={function(event) {
               getEmail(event);
-              addCommentator(event);
             }
           }
           />
@@ -84,19 +104,57 @@ export default function SignIn({ getEmail, addCommentator, getPassword }) {
             autoComplete="current-password"
             onChange={getPassword}
           />
-          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Button
-            type="submit"
-            method="get"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick = {function(){
+              checkUser();
+              handleClickOpen();
+            }}
           >
-            
             Sign In
+          </Button>
             
-          </Button></Link>
+                  <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                disableBackdropClick = "false"
+                disableEscapeKeyDown = {false}
+                >
+                <DialogTitle id="alert-dialog-title">{"Message"}</DialogTitle>
+                
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                  { isProcessing ? <CircularProgress /> :
+                    <div>
+                    {message}
+                    </div>
+                  }
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color="primary" autoFocus>
+                    
+                    {
+                      isSignedIn ? 
+                  <Link to="/"
+            style={{ textDecoration: 'none', color: 'inherit' }}>
+                    Click me to continue
+                     </Link>
+                      :
+                      <div>
+                      Okay
+                      </div>
+                   }
+                  </Button>
+                </DialogActions>
+              
+              </Dialog>
+                
               <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>

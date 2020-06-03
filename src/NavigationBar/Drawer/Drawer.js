@@ -9,7 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
+import {
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TheDrawer() {
+export default function TheDrawer({ email }) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     open: false,
@@ -49,12 +51,14 @@ export default function TheDrawer() {
       <Divider />
       </List>
       <List>
-        {['thefakeblog', 'home', 'back to last page'].map((text, index) => (
+      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        {['thefakeblog'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
+        </Link>
       </List>
       <Divider />
       <List>
@@ -64,7 +68,21 @@ export default function TheDrawer() {
             <ListItemText primary={text} />
           </ListItem>
         ))}
+       <Divider />
+
       </List>
+      {
+      email === "gtarun14111@gmail.com" ? (
+        <List>
+          <Link  to="/blogAdder"  style={{ textDecoration: 'none', color: 'inherit' }}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText primary={"Add Blog"} />
+          </ListItem>
+             </Link>
+      </List>
+          ) : <div></div>
+  } 
     </div>
     
   );

@@ -1,9 +1,7 @@
 import React from 'react';
 import './Comment.css';
 
-const Comment = ({commentator, comment}) => {
-  console.log(commentator);
-  console.log(comment);
+const Comment = ({comment}) => {
   
   return (
     <div
@@ -12,7 +10,7 @@ const Comment = ({commentator, comment}) => {
         <div
         className = "caption"
         >
-          {comment.commentHeading}
+        {comment.commentHeading}
         </div>
         {comment.commentBody}
       </div>
