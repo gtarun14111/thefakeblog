@@ -8,7 +8,7 @@ class Blogpost extends React.Component {
 
 	componentDidMount() {
 		const url = String(window.location.href);
-		const address = url.substring(32);
+		const address = url.substring(45);
 		this.props.showBlogPost(address)();
 		}
 
