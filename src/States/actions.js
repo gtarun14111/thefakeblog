@@ -101,7 +101,7 @@ export const addNewComment = (text) => ({
 
 export const isUserValid = (email, password) => (dispatch) => {
 	dispatch({type: CHECK_USER_PENDING});
-	fetch('http://localhost:3001/signin', {
+	fetch('https://pure-refuge-29809.herokuapp.com/signin', {
 			method: 'post',
 			headers: {'Content-type': 'application/json'},
 			body: JSON.stringify({
@@ -116,7 +116,7 @@ export const isUserValid = (email, password) => (dispatch) => {
 
 export const addingUser = (user) => (dispatch) => {
 	dispatch({type: ADDING_USER_PENDING});
-	fetch('http://localhost:3001/signup', {
+	fetch('https://pure-refuge-29809.herokuapp.com/signup', {
 		method: 'post',
 		headers: {'Content-type': 'application/json'},
 		body: JSON.stringify({
@@ -130,14 +130,14 @@ export const addingUser = (user) => (dispatch) => {
 
 export const getBlogList = () => (dispatch) => {
 	dispatch({type: GETTING_BLOG_PENDING});
-	fetch('http://localhost:3001/')
+	fetch('https://pure-refuge-29809.herokuapp.com/')
 		.then(response => response.json())
 		.then(data => dispatch({ type: GETTING_BLOG_SUCCESS, payload: data}))
 		.catch(err => dispatch({ type: GETTING_BLOG_FAILED, payload: err}))
 }
 
 export const getBlogPost = (location) => (dispatch) => {
-	location = "http://localhost:3001/BlogPost/" + location;
+	location = "https://pure-refuge-29809.herokuapp.com/BlogPost/" + location;
 	dispatch({type: GETTING_BLOGPOST_PENDING});
 	fetch(location)
 	.then(response => response.json())
@@ -146,7 +146,7 @@ export const getBlogPost = (location) => (dispatch) => {
 }
 
 export const addComment = (location, commentator, commentbody, commentheading) => (dispatch) => {
-	location = "http://localhost:3001/BlogPost/" + location + "/commented";
+	location = "https://pure-refuge-29809.herokuapp.com/BlogPost/" + location + "/commented";
 	dispatch({type: ADDING_COMMENT_PENDING});
 	fetch(location, {
 		method: 'post',
@@ -164,7 +164,7 @@ export const addComment = (location, commentator, commentbody, commentheading) =
 
 export const addBlog = (author, heading, content, blogid) => (dispatch) => {
 	dispatch({type: ADDING_BLOG_PENDING});
-	fetch("http://localhost:3001/BlogAdder", {
+	fetch("https://pure-refuge-29809.herokuapp.com/BlogAdder", {
 		method: 'post',
 		headers: {'Content-type': 'application/json'},
 		body: JSON.stringify({
