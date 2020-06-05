@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch) => {
     addingBlogItem: (event) => dispatch(addNewBlog("")),
     showBlogs: () => (event) => dispatch(getBlogList()),
     showBlogPost: (location) => (event) => dispatch(getBlogPost(location)),
-    addBlog: (author, heading, content, blogId) => (event) => dispatch(addBlog(author, heading, content, blogId)),
+    addBlog: (author, heading, content, blogid) => (event) => dispatch(addBlog(author, heading, content, blogid)),
 
     //Comment Actions
     addingCmntHeading: (event) => dispatch(getCommentHeading(event.target.value)),
@@ -194,7 +194,7 @@ class App extends React.Component {
           addBlogHeading = {addingBlogHeading}
           addBlogContent = {addingBlogContent}
           addBlogAuthor = {addingBlogAuthor}
-          addBlog = {addBlog(email, blog.heading, blog.content, blog.blogId)}
+          addBlog = {addBlog(email, blog.heading, blog.content, blog.blogid)}
           author = {email}
           />
         </Route>

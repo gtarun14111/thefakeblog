@@ -51,7 +51,7 @@ const defaultBlog = {
 	heading: "",
 	image: "",
 	content: "",
-	blogId: 0
+	blogid: 0
 }
 
 const blogList = {
@@ -60,14 +60,14 @@ const blogList = {
 	author: "",
 	heading: "",
 	image: "",
-	blogId: 0,
+	blogid: 0,
 	content: ""
 	}
 	]
 }
 
 const defaultComment = {
-	blogId: 0,
+	blogid: 0,
 	commentHeading: "",
 	commentBody: "",
 	commentator: "",
@@ -78,12 +78,12 @@ blog: {
 	author: "",
 	heading: "",
 	image: "",
-	blogId: 0,
+	blogid: 0,
 	content: ""
 },
 cmnts: [
 	{
-		blogId: 0,
+		blogid: 0,
 		commentHeading: "",
 		commentbody: "",
 		commentator: ""
@@ -148,7 +148,7 @@ export const blogActions = (state = defaultBlog, action = {}) => {
 		case ADD_BLOG_ITEM:
 			return Object.assign({}, state, {totalBlogs: [].concat(state.totalBlogs,
 			Object.assign({}, {
-				blogId: state.blogId + 1,
+				blogid: state.blogid + 1,
 				heading: state.heading,
 				content: state.content,
 				author: state.author,
@@ -157,7 +157,7 @@ export const blogActions = (state = defaultBlog, action = {}) => {
 			)},
 			{heading: ""},
 			{content: ""},
-			{blogId: state.blogId + 1}
+			{blogid: state.blogid + 1}
 		);
 		default: return state;
 	}

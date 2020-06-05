@@ -10,9 +10,9 @@ const Comment = ({comment}) => {
         <div
         className = "caption"
         >
-        {comment.commentHeading}
+        {comment.commentheading}
         </div>
-        {comment.commentBody}
+        {comment.commentbody}
       </div>
       <div className = "commentator">
         {comment.commentator}

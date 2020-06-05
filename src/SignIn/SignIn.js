@@ -122,7 +122,7 @@ export default function SignIn({ getEmail,
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-                disableBackdropClick = "false"
+                disableBackdropClick = {false}
                 disableEscapeKeyDown = {false}
                 >
                 <DialogTitle id="alert-dialog-title">{"Message"}</DialogTitle>

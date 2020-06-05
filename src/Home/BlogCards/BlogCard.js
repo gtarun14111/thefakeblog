@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const BlogCard = ({ src, card }) => {
   return (
   	<div>
-    <Link to={`/Blogpost/:${card.blogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link to={`/Blogpost/:${card.blogid}`} style={{ textDecoration: 'none', color: 'inherit' }}>
   	<button className = "Bcard">
   			<Fragment>
         <div>
